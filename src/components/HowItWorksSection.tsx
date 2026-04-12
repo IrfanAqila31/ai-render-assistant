@@ -18,7 +18,7 @@ export default function HowItWorksSection() {
 
         <div className="relative">
           {/* Garis penghubung gradient (hanya desktop) */}
-          <div className="hidden md:block absolute top-[4.5rem] left-[10%] right-[10%] h-1 bg-gradient-to-r from-blue-100 via-blue-500 to-indigo-100 z-0 rounded-full"></div>
+          <div className="hidden md:block absolute top-18 left-[10%] right-[10%] h-1 bg-linear-to-r from-blue-100 via-blue-500 to-indigo-100 z-0 rounded-full"></div>
 
           {/* Daftar Langkah Berurutan */}
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 relative z-10 text-center mx-auto">

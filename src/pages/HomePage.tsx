@@ -12,7 +12,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-50 flex flex-col font-sans">
       <Header />
       
-      <main className="flex-grow">
+      <main className="grow">
         <HeroSection />
         <FeaturesSection />
         <HowItWorksSection />

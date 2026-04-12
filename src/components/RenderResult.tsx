@@ -50,7 +50,7 @@ export default function RenderResult({ status, resultUrl, error }: RenderResultP
 
   return (
     <div className="flex flex-col h-full relative">
-      <figure className="flex-grow border border-gray-200 rounded-2xl bg-gray-100 flex flex-col items-center justify-center min-h-[400px] overflow-hidden relative shadow-inner">
+      <figure className="grow border border-gray-200 rounded-2xl bg-gray-100 flex flex-col items-center justify-center min-h-[400px] overflow-hidden relative shadow-inner">
         
         {/* Kondisi 1: Idle */}
         {status === 'idle' && (
@@ -75,7 +75,7 @@ export default function RenderResult({ status, resultUrl, error }: RenderResultP
           <div className="text-center text-red-600 flex flex-col items-center px-6">
             <XCircle className="w-16 h-16 mb-4 opacity-80" />
             <p className="font-bold text-lg">Gagal Merender</p>
-            <p className="text-sm text-gray-700 bg-red-100 p-3 rounded-lg mt-3 break-words max-w-sm border border-red-200">
+            <p className="text-sm text-gray-700 bg-red-100 p-3 rounded-lg mt-3 wrap-break-words max-w-sm border border-red-200">
                {error}
             </p>
           </div>
@@ -89,7 +89,7 @@ export default function RenderResult({ status, resultUrl, error }: RenderResultP
               alt="Hasil Render Fotorealistik AI" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             
             <figcaption className="absolute bottom-0 left-0 right-0 p-6 translate-y-6 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300 flex justify-between items-end">
               <div className="text-white">

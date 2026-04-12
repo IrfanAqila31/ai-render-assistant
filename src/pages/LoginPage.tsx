@@ -38,7 +38,7 @@ export default function LoginPage() {
           {/* Ganti h2 jadi h1 karena ini adalah judul utama di halaman ini */}
           <h1 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 group">
             AI Render{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">
               Assistant
             </span>
           </h1>
