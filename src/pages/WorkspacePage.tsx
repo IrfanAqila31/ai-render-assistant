@@ -2,8 +2,10 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import ImageUpload from "../components/ImageUpload";
+import PresetSelector from "../components/PresetSelector";
 import PromptInput from "../components/PromptInput";
 import RenderResult from "../components/RenderResult";
+import { PRESETS } from "../data/presets";
 // IMPORT BARU: Panggil service API yang barusan kita buat
 import { generateRender } from "../services/aiServices";
 
@@ -15,12 +17,30 @@ export default function WorkspacePage() {
   const [renderStatus, setRenderStatus] = useState<RenderStatus>("idle");
   const [resultImageUrl, setResultImageUrl] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>("");
+  const [activePresetId, setActivePresetId] = useState<string | null>(null);
 
   const handleFileSelect = (file: File | null) => {
     setImageFile(file);
     if (renderStatus === "success" || renderStatus === "error") {
       setRenderStatus("idle");
       setResultImageUrl(null);
+    }
+  };
+
+  const handlePresetSelect = (id: string) => {
+    const preset = PRESETS.find((p) => p.id === id);
+    if (!preset) return;
+    setPrompt(preset.promptText);
+    setActivePresetId(id);
+  };
+
+  const handlePromptChange = (text: string) => {
+    setPrompt(text);
+    if (activePresetId !== null) {
+      const activePreset = PRESETS.find((p) => p.id === activePresetId);
+      if (activePreset && text !== activePreset.promptText) {
+        setActivePresetId(null);
+      }
     }
   };
 
@@ -80,10 +100,19 @@ export default function WorkspacePage() {
               <ImageUpload onFileSelect={handleFileSelect} />
             </div>
 
+            <div className="mb-6">
+              <PresetSelector
+                presets={PRESETS}
+                activePresetId={activePresetId}
+                onPresetSelect={handlePresetSelect}
+                isLoading={renderStatus === "loading"}
+              />
+            </div>
+
             <div>
               <PromptInput
                 prompt={prompt}
-                onPromptChange={setPrompt}
+                onPromptChange={handlePromptChange}
                 onSubmit={handleStartRender}
                 isLoading={renderStatus === "loading"}
               />
